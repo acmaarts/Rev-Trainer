@@ -2134,26 +2134,26 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020069
-			public const int avd_hide_password_1 = 2130837609;
-			
 			// aapt resource value: 0x7f02006a
-			public const int avd_hide_password_2 = 2130837610;
+			public const int avd_hide_password_1 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int avd_hide_password_3 = 2130837611;
+			public const int avd_hide_password_2 = 2130837611;
+			
+			// aapt resource value: 0x7f02006c
+			public const int avd_hide_password_3 = 2130837612;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02006c
-			public const int avd_show_password_1 = 2130837612;
-			
 			// aapt resource value: 0x7f02006d
-			public const int avd_show_password_2 = 2130837613;
+			public const int avd_show_password_1 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int avd_show_password_3 = 2130837614;
+			public const int avd_show_password_2 = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int avd_show_password_3 = 2130837615;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2203,17 +2203,20 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f020064
 			public const int notification_icon_background = 2130837604;
 			
-			// aapt resource value: 0x7f020067
-			public const int notification_template_icon_bg = 2130837607;
-			
 			// aapt resource value: 0x7f020068
-			public const int notification_template_icon_low_bg = 2130837608;
+			public const int notification_template_icon_bg = 2130837608;
+			
+			// aapt resource value: 0x7f020069
+			public const int notification_template_icon_low_bg = 2130837609;
 			
 			// aapt resource value: 0x7f020065
 			public const int notification_tile_bg = 2130837605;
 			
 			// aapt resource value: 0x7f020066
 			public const int notify_panel_notification_icon_bg = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int revolution_xx_red_white_black = 2130837607;
 			
 			static Drawable()
 			{
@@ -2228,11 +2231,8 @@ namespace RevTrainer.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080086
-			public const int action0 = 2131230854;
-			
-			// aapt resource value: 0x7f08009c
-			public const int action_add = 2131230876;
+			// aapt resource value: 0x7f080084
+			public const int action0 = 2131230852;
 			
 			// aapt resource value: 0x7f080064
 			public const int action_bar = 2131230820;
@@ -2255,17 +2255,17 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080041
 			public const int action_bar_title = 2131230785;
 			
-			// aapt resource value: 0x7f080083
-			public const int action_container = 2131230851;
+			// aapt resource value: 0x7f080081
+			public const int action_container = 2131230849;
 			
 			// aapt resource value: 0x7f080065
 			public const int action_context_bar = 2131230821;
 			
-			// aapt resource value: 0x7f08008a
-			public const int action_divider = 2131230858;
+			// aapt resource value: 0x7f080088
+			public const int action_divider = 2131230856;
 			
-			// aapt resource value: 0x7f080084
-			public const int action_image = 2131230852;
+			// aapt resource value: 0x7f080082
+			public const int action_image = 2131230850;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2282,11 +2282,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080043
 			public const int action_mode_close_button = 2131230787;
 			
-			// aapt resource value: 0x7f080085
-			public const int action_text = 2131230853;
+			// aapt resource value: 0x7f080083
+			public const int action_text = 2131230851;
 			
-			// aapt resource value: 0x7f080093
-			public const int actions = 2131230867;
+			// aapt resource value: 0x7f080091
+			public const int actions = 2131230865;
 			
 			// aapt resource value: 0x7f080044
 			public const int activity_chooser_view_content = 2131230788;
@@ -2315,8 +2315,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f08004b
 			public const int buttonPanel = 2131230795;
 			
-			// aapt resource value: 0x7f080087
-			public const int cancel_action = 2131230855;
+			// aapt resource value: 0x7f080085
+			public const int cancel_action = 2131230853;
 			
 			// aapt resource value: 0x7f080030
 			public const int center = 2131230768;
@@ -2330,8 +2330,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f08005b
 			public const int checkbox = 2131230811;
 			
-			// aapt resource value: 0x7f08008f
-			public const int chronometer = 2131230863;
+			// aapt resource value: 0x7f08008d
+			public const int chronometer = 2131230861;
 			
 			// aapt resource value: 0x7f080039
 			public const int clip_horizontal = 2131230777;
@@ -2387,8 +2387,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080021
 			public const int end = 2131230753;
 			
-			// aapt resource value: 0x7f080099
-			public const int end_padder = 2131230873;
+			// aapt resource value: 0x7f080097
+			public const int end_padder = 2131230871;
 			
 			// aapt resource value: 0x7f08002a
 			public const int enterAlways = 2131230762;
@@ -2404,6 +2404,9 @@ namespace RevTrainer.Droid
 			
 			// aapt resource value: 0x7f08005a
 			public const int expanded_menu = 2131230810;
+			
+			// aapt resource value: 0x7f08009d
+			public const int fastforwardButton = 2131230877;
 			
 			// aapt resource value: 0x7f08003b
 			public const int fill = 2131230779;
@@ -2426,8 +2429,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080049
 			public const int icon = 2131230793;
 			
-			// aapt resource value: 0x7f080094
-			public const int icon_group = 2131230868;
+			// aapt resource value: 0x7f080092
+			public const int icon_group = 2131230866;
 			
 			// aapt resource value: 0x7f080025
 			public const int ifRoom = 2131230757;
@@ -2435,11 +2438,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080046
 			public const int image = 2131230790;
 			
-			// aapt resource value: 0x7f080090
-			public const int info = 2131230864;
-			
-			// aapt resource value: 0x7f080081
-			public const int item_text = 2131230849;
+			// aapt resource value: 0x7f08008e
+			public const int info = 2131230862;
 			
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
@@ -2450,11 +2450,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080034
 			public const int left = 2131230772;
 			
-			// aapt resource value: 0x7f080095
-			public const int line1 = 2131230869;
+			// aapt resource value: 0x7f080093
+			public const int line1 = 2131230867;
 			
-			// aapt resource value: 0x7f080097
-			public const int line3 = 2131230871;
+			// aapt resource value: 0x7f080095
+			public const int line3 = 2131230869;
 			
 			// aapt resource value: 0x7f08000f
 			public const int listMode = 2131230735;
@@ -2462,14 +2462,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f080082
-			public const int listview = 2131230850;
+			// aapt resource value: 0x7f080099
+			public const int masked = 2131230873;
 			
-			// aapt resource value: 0x7f08009b
-			public const int masked = 2131230875;
-			
-			// aapt resource value: 0x7f080089
-			public const int media_actions = 2131230857;
+			// aapt resource value: 0x7f080087
+			public const int media_actions = 2131230855;
 			
 			// aapt resource value: 0x7f080022
 			public const int middle = 2131230754;
@@ -2492,14 +2489,14 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080010
 			public const int normal = 2131230736;
 			
-			// aapt resource value: 0x7f080092
-			public const int notification_background = 2131230866;
+			// aapt resource value: 0x7f080090
+			public const int notification_background = 2131230864;
 			
-			// aapt resource value: 0x7f08008c
-			public const int notification_main_column = 2131230860;
+			// aapt resource value: 0x7f08008a
+			public const int notification_main_column = 2131230858;
 			
-			// aapt resource value: 0x7f08008b
-			public const int notification_main_column_container = 2131230859;
+			// aapt resource value: 0x7f080089
+			public const int notification_main_column_container = 2131230857;
 			
 			// aapt resource value: 0x7f080037
 			public const int parallax = 2131230775;
@@ -2510,6 +2507,9 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080038
 			public const int pin = 2131230776;
 			
+			// aapt resource value: 0x7f08009b
+			public const int playButton = 2131230875;
+			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
 			
@@ -2519,14 +2519,17 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f08005d
 			public const int radio = 2131230813;
 			
+			// aapt resource value: 0x7f08009a
+			public const int rewindButton = 2131230874;
+			
 			// aapt resource value: 0x7f080035
 			public const int right = 2131230773;
 			
-			// aapt resource value: 0x7f080091
-			public const int right_icon = 2131230865;
+			// aapt resource value: 0x7f08008f
+			public const int right_icon = 2131230863;
 			
-			// aapt resource value: 0x7f08008d
-			public const int right_side = 2131230861;
+			// aapt resource value: 0x7f08008b
+			public const int right_side = 2131230859;
 			
 			// aapt resource value: 0x7f08001a
 			public const int screen = 2131230746;
@@ -2621,8 +2624,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080036
 			public const int start = 2131230774;
 			
-			// aapt resource value: 0x7f080088
-			public const int status_bar_latest_event_content = 2131230856;
+			// aapt resource value: 0x7f080086
+			public const int status_bar_latest_event_content = 2131230854;
+			
+			// aapt resource value: 0x7f08009c
+			public const int stopButton = 2131230876;
 			
 			// aapt resource value: 0x7f08005e
 			public const int submenuarrow = 2131230814;
@@ -2633,11 +2639,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080011
 			public const int tabMode = 2131230737;
 			
-			// aapt resource value: 0x7f080098
-			public const int text = 2131230872;
-			
 			// aapt resource value: 0x7f080096
-			public const int text2 = 2131230870;
+			public const int text = 2131230870;
+			
+			// aapt resource value: 0x7f080094
+			public const int text2 = 2131230868;
 			
 			// aapt resource value: 0x7f080052
 			public const int textSpacerNoButtons = 2131230802;
@@ -2654,8 +2660,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f08000d
 			public const int textinput_error = 2131230733;
 			
-			// aapt resource value: 0x7f08008e
-			public const int time = 2131230862;
+			// aapt resource value: 0x7f08008c
+			public const int time = 2131230860;
 			
 			// aapt resource value: 0x7f08004a
 			public const int title = 2131230794;
@@ -2690,8 +2696,8 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f08009a
-			public const int visible = 2131230874;
+			// aapt resource value: 0x7f080098
+			public const int visible = 2131230872;
 			
 			// aapt resource value: 0x7f080027
 			public const int withText = 2131230759;
@@ -2876,13 +2882,13 @@ namespace RevTrainer.Droid
 			public const int design_text_input_password_icon = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int Detail = 2130968617;
+			public const int LevelListFragment = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int Main = 2130968618;
+			public const int LevelListView = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int Master = 2130968619;
+			public const int Main = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
 			public const int notification_action = 2130968620;
@@ -2930,16 +2936,19 @@ namespace RevTrainer.Droid
 			public const int notification_template_part_time = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_item_material = 2130968635;
+			public const int RoutineActivity = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int select_dialog_multichoice_material = 2130968636;
+			public const int select_dialog_item_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int select_dialog_singlechoice_material = 2130968637;
+			public const int select_dialog_multichoice_material = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int support_simple_spinner_dropdown_item = 2130968638;
+			public const int select_dialog_singlechoice_material = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int support_simple_spinner_dropdown_item = 2130968639;
 			
 			static Layout()
 			{
@@ -2955,7 +2964,7 @@ namespace RevTrainer.Droid
 		{
 			
 			// aapt resource value: 0x7f0e0000
-			public const int master_menu = 2131623936;
+			public const int RoutineMenu = 2131623936;
 			
 			static Menu()
 			{
@@ -3619,6 +3628,12 @@ namespace RevTrainer.Droid
 			
 			// aapt resource value: 0x7f090003
 			public const int CardView_Light = 2131296259;
+			
+			// aapt resource value: 0x7f09017e
+			public const int MyTheme = 2131296638;
+			
+			// aapt resource value: 0x7f09017f
+			public const int MyTheme_Base = 2131296639;
 			
 			// aapt resource value: 0x7f090022
 			public const int Platform_AppCompat = 2131296290;

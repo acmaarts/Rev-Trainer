@@ -133,8 +133,10 @@
     <Compile Include="Helpers\RecyclerClickEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Activities\DetailActivity.cs" />
-    <Compile Include="Adapters\MasterAdapter.cs" />
+    <Compile Include="Activities\RoutineActivity.cs" />
+    <Compile Include="Adapters\LevelListAdapter.cs" />
+    <Compile Include="Fragments\LevelListFragment.cs" />
+    <Compile Include="Views\DrawView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -149,15 +151,23 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_save.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_save.png" />
     <AndroidResource Include="Resources\layout\Main.axml" />
-    <AndroidResource Include="Resources\menu\master_menu.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\layout\Master.axml" />
-    <AndroidResource Include="Resources\layout\Detail.axml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\revolution_xx_red_white_black.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\revolution_xx_red_white_black.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\revolution_xx_red_white_black.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\revolution_xx_red_white_black.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\revolution_xx_red_white_black.png" />
+    <AndroidResource Include="Resources\layout\RoutineActivity.axml" />
+    <AndroidResource Include="Resources\layout\LevelListView.axml" />
+    <AndroidResource Include="Resources\menu\RoutineMenu.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\layout\LevelListFragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
@@ -165,6 +175,8 @@
     <Folder Include="Resources\values-v19\" />
     <Folder Include="Resources\values-v21\" />
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\menu\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="..\RevTrainer\RevTrainer.projitems" Label="Shared" Condition="Exists('..\RevTrainer\RevTrainer.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

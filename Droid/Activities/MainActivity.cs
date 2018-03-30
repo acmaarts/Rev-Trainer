@@ -10,6 +10,7 @@ using RevTrainer.ViewModels;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Android.Support.V7.App;
 
 namespace RevTrainer.Droid
 {
@@ -17,80 +18,71 @@ namespace RevTrainer.Droid
     /// Main activity.
     /// </summary>
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon",
+        Theme = "@style/Theme.AppCompat.Light.DarkActionBar",
         LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : ListActivity
+        ScreenOrientation = ScreenOrientation.Landscape)]
+    public class MainActivity : AppCompatActivity
     {
-        private static MasterViewModel _viewModel;
-
         /// <summary>
-        /// Gets the view model.
+        /// Ons the create.
         /// </summary>
-        /// <value>The view model.</value>
-        public static MasterViewModel ViewModel
-        {
-            get { return _viewModel ?? (_viewModel = new MasterViewModel()); }
-        }
-
-
-        protected override void OnCreate(Bundle bundle)
-        {
-            base.OnCreate(bundle);
+        /// <param name="savedInstanceState">Saved instance state.</param>
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+            base.OnCreate(savedInstanceState);
 
             AppCenter.Start("9a8ccfd3-c903-46b9-82a9-67afbd2af425", typeof(Analytics), typeof(Crashes));
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Master);
-
-            ListAdapter = new MasterAdapter(this, ViewModel.Items);
-
-            ListView.ItemLongClick += (sender, e) => {
-                ViewModel.DeleteCommand.Execute(e.Position);
-                ((MasterAdapter)ListAdapter).NotifyDataSetChanged();
-            };
-        }
-
-        private void NavigateToDetails(int index)
-        {
-            var intent = new Intent(this, typeof(DetailActivity));
-            intent.PutExtra("item", ViewModel.Items[index].ToString());
-            StartActivity(intent);
-        }
-
-        protected override void OnListItemClick(ListView l, View v, int position, long id)
-        {
-            base.OnListItemClick(l, v, position, id);
-            NavigateToDetails(position);
-        }
+            SetContentView(Resource.Layout.Main);
+		}
 
         /// <summary>
-        /// Ons the create options menu.
+        /// Ons the start.
         /// </summary>
-        /// <returns><c>true</c>, if create options menu was oned, <c>false</c> otherwise.</returns>
-        /// <param name="menu">Menu.</param>
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.master_menu, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
+		protected override void OnStart()
+		{
+            base.OnStart();
+		}
 
         /// <summary>
-        /// Ons the options item selected.
+        /// Ons the restart.
         /// </summary>
-        /// <returns><c>true</c>, if options item selected was oned, <c>false</c> otherwise.</returns>
-        /// <param name="item">Item.</param>
-        public override bool OnOptionsItemSelected(IMenuItem item)
+        protected override void OnRestart()
         {
-            switch (item.ItemId)
-            {
-                case Resource.Id.action_add:
-                    ViewModel.AddCommand.Execute(null);
-                    ((MasterAdapter)ListAdapter).NotifyDataSetChanged();
-                    return true;
-            }
-
-            return base.OnOptionsItemSelected(item);
+            base.OnRestart();
         }
-    }
+
+		/// <summary>
+		/// Ons the resume.
+		/// </summary>
+		protected override void OnResume()
+		{
+            base.OnResume();
+		}
+
+        /// <summary>
+        /// Ons the pause.
+        /// </summary>
+		protected override void OnPause()
+		{
+            base.OnPause();
+		}
+
+		/// <summary>
+		/// Ons the stop.
+		/// </summary>
+		protected override void OnStop()
+		{
+            base.OnStop();
+		}
+
+        /// <summary>
+        /// Ons the destroy.
+        /// </summary>
+		protected override void OnDestroy()
+		{
+            base.OnDestroy();
+		}
+	}
 }

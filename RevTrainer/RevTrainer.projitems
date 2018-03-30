@@ -12,14 +12,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Command.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ServiceLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\TimeEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Level.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LevelsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ILevelsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>
