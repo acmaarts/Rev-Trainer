@@ -2134,26 +2134,26 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020072
-			public const int avd_hide_password_1 = 2130837618;
-			
 			// aapt resource value: 0x7f020073
-			public const int avd_hide_password_2 = 2130837619;
+			public const int avd_hide_password_1 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int avd_hide_password_3 = 2130837620;
+			public const int avd_hide_password_2 = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int avd_hide_password_3 = 2130837621;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020075
-			public const int avd_show_password_1 = 2130837621;
-			
 			// aapt resource value: 0x7f020076
-			public const int avd_show_password_2 = 2130837622;
+			public const int avd_show_password_1 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int avd_show_password_3 = 2130837623;
+			public const int avd_show_password_2 = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int avd_show_password_3 = 2130837624;
 			
 			// aapt resource value: 0x7f020055
 			public const int Clockwise = 2130837589;
@@ -2215,11 +2215,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f020068
 			public const int notification_icon_background = 2130837608;
 			
-			// aapt resource value: 0x7f020070
-			public const int notification_template_icon_bg = 2130837616;
-			
 			// aapt resource value: 0x7f020071
-			public const int notification_template_icon_low_bg = 2130837617;
+			public const int notification_template_icon_bg = 2130837617;
+			
+			// aapt resource value: 0x7f020072
+			public const int notification_template_icon_low_bg = 2130837618;
 			
 			// aapt resource value: 0x7f020069
 			public const int notification_tile_bg = 2130837609;
@@ -2234,13 +2234,16 @@ namespace RevTrainer.Droid
 			public const int Sanne = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int Tim = 2130837613;
+			public const int Screenshot = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int Twan = 2130837614;
+			public const int Tim = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int Vienna = 2130837615;
+			public const int Twan = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int Vienna = 2130837616;
 			
 			static Drawable()
 			{

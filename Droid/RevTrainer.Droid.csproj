@@ -201,6 +201,11 @@
     <AndroidResource Include="Resources\drawable-hdpi\Clockwise.png" />
     <AndroidResource Include="Resources\drawable-hdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Reset.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Screenshot.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Screenshot.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Screenshot.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Screenshot.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Screenshot.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
