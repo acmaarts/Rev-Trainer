@@ -1,0 +1,18 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:id="@+id/action_ccw"
+        android:title="CCW"
+        android:icon="@drawable/CounterClockwise"
+        app:showAsAction="always" />
+     <item
+        android:id="@+id/action_cw"
+        android:title="CW"
+        android:icon="@drawable/Clockwise"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_reset"
+        android:title="Reset"
+        android:icon="@drawable/Reset"
+        app:showAsAction="always" />
+</menu>

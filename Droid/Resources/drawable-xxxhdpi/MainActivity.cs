@@ -20,12 +20,17 @@ namespace RevTrainer.Droid
         LaunchMode = LaunchMode.SingleInstance,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Landscape)]
-    public class MainActivity : AppCompatActivity, View.IOnTouchListener, ViewTreeObserver.IOnGlobalLayoutListener
+    public class MainActivity : AppCompatActivity,
+                    View.IOnTouchListener,
+                    ViewTreeObserver.IOnGlobalLayoutListener
     {
         private ViewGroup root;
 
         private int xDelta;
         private int yDelta;
+
+        private bool isClickEvent;
+        private bool turningCW = true;
 
         private ImageView vienna;
         private ImageView tim;
@@ -113,7 +118,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             vienna.LayoutParameters = layoutParams;
-
             vienna.SetOnTouchListener(this);
             root.AddView(vienna);
 
@@ -125,7 +129,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             tim.LayoutParameters = layoutParams;
-
             tim.SetOnTouchListener(this);
             root.AddView(tim);
 
@@ -137,7 +140,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             mario.LayoutParameters = layoutParams;
-
             mario.SetOnTouchListener(this);
             root.AddView(mario);
 
@@ -149,7 +151,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             twan.LayoutParameters = layoutParams;
-
             twan.SetOnTouchListener(this);
             root.AddView(twan);
 
@@ -161,7 +162,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             judith.LayoutParameters = layoutParams;
-
             judith.SetOnTouchListener(this);
             root.AddView(judith);
 
@@ -173,7 +173,6 @@ namespace RevTrainer.Droid
                 TopMargin = baseHeight
             };
             sanne.LayoutParameters = layoutParams;
-
             sanne.SetOnTouchListener(this);
             root.AddView(sanne);
         }
@@ -187,17 +186,32 @@ namespace RevTrainer.Droid
             switch (e.Action & MotionEventActions.Mask)
             {
                 case MotionEventActions.Down:
+                    isClickEvent = true;
+
                     layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
                     xDelta = rawX - layoutParams.LeftMargin;
                     yDelta = rawY - layoutParams.TopMargin;
+
+                    System.Console.WriteLine(xDelta);
+                    System.Console.WriteLine(yDelta);
+
                     break;
                 case MotionEventActions.Up:
+                    if (isClickEvent)
+                    {
+                        if (turningCW)
+                            v.Rotation += 45.0f;
+                        else
+                            v.Rotation -= 45.0f;
+                    }
                     break;
                 case MotionEventActions.PointerDown:
                     break;
                 case MotionEventActions.PointerUp:
                     break;
                 case MotionEventActions.Move:
+                    isClickEvent = false;
+
                     layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
                     layoutParams.LeftMargin = rawX - xDelta;
                     layoutParams.TopMargin = rawY - yDelta;
@@ -213,6 +227,40 @@ namespace RevTrainer.Droid
         {
             root.ViewTreeObserver.RemoveOnGlobalLayoutListener(this);
             DrawRevKites();
+        }
+
+        /// <summary>
+        /// Ons the create options menu.
+        /// </summary>
+        /// <returns><c>true</c>, if create options menu was oned, <c>false</c> otherwise.</returns>
+        /// <param name="menu">Menu.</param>
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return true;
+        }
+
+        /// <summary>
+        /// Ons the options item selected.
+        /// </summary>
+        /// <returns><c>true</c>, if options item selected was oned, <c>false</c> otherwise.</returns>
+        /// <param name="item">Item.</param>
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_cw:
+                    turningCW = true;
+                    break;
+                case Resource.Id.action_ccw:
+                    turningCW = false;
+                    break;
+                case Resource.Id.action_reset:
+                    DrawRevKites();
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

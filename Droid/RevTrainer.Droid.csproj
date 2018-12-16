@@ -185,6 +185,22 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Vienna.png" />
+    <AndroidResource Include="Resources\menu\menu_main.xml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\CounterClockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Reset.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\CounterClockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Reset.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\CounterClockwise.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Reset.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\CounterClockwise.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Reset.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\CounterClockwise.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Reset.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
