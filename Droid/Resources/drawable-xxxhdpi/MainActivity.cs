@@ -103,12 +103,6 @@ namespace RevTrainer.Droid
             var baseWidth = (root.Width - 1175) / 2;
             var baseHeight = root.Height - 90;
 
-            System.Console.WriteLine("Root Width: " + Window.DecorView.Width);
-            System.Console.WriteLine("Root Height: " + Window.DecorView.Height);
-
-            System.Console.WriteLine("Base Width: " + baseWidth);
-            System.Console.WriteLine("Base Height: " + baseHeight);
-
             root.RemoveAllViews();
 
             vienna = new ImageView(this);
