@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -127,16 +126,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainApplication.cs" />
-    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Helpers\BaseRecycleViewAdapter.cs" />
     <Compile Include="Helpers\RecyclerClickEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Activities\RoutineActivity.cs" />
-    <Compile Include="Adapters\LevelListAdapter.cs" />
-    <Compile Include="Fragments\LevelListFragment.cs" />
     <Compile Include="Views\DrawView.cs" />
+    <Compile Include="Resources\drawable-xxxhdpi\MainActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -157,17 +153,38 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\revolution_xx_red_white_black.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\revolution_xx_red_white_black.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\revolution_xx_red_white_black.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\revolution_xx_red_white_black.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\revolution_xx_red_white_black.png" />
-    <AndroidResource Include="Resources\layout\RoutineActivity.axml" />
-    <AndroidResource Include="Resources\layout\LevelListView.axml" />
-    <AndroidResource Include="Resources\menu\RoutineMenu.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
-    <AndroidResource Include="Resources\layout\LevelListFragment.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Judith.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Tim.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Twan.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Judith.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Tim.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Twan.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Judith.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Tim.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Twan.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Judith.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Tim.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Twan.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Judith.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Tim.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Twan.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Vienna.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
