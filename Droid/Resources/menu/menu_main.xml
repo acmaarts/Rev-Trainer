@@ -5,10 +5,15 @@
         android:title="CCW"
         android:icon="@drawable/CounterClockwise"
         app:showAsAction="always" />
-     <item
+    <item
         android:id="@+id/action_cw"
         android:title="CW"
         android:icon="@drawable/Clockwise"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_screenshot"
+        android:title="Screenshot"
+        android:icon="@drawable/Screenshot"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_reset"

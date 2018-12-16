@@ -2315,8 +2315,11 @@ namespace RevTrainer.Droid
 			// aapt resource value: 0x7f080043
 			public const int action_mode_close_button = 2131230787;
 			
+			// aapt resource value: 0x7f08009e
+			public const int action_reset = 2131230878;
+			
 			// aapt resource value: 0x7f08009d
-			public const int action_reset = 2131230877;
+			public const int action_screenshot = 2131230877;
 			
 			// aapt resource value: 0x7f080084
 			public const int action_text = 2131230852;

@@ -1,14 +1,15 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using RevTrainer.ViewModels;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Android.Support.V7.App;
+using System;
+using Android.Graphics;
+using System.IO;
 
 namespace RevTrainer.Droid
 {
@@ -43,7 +44,7 @@ namespace RevTrainer.Droid
         /// Ons the create.
         /// </summary>
         /// <param name="savedInstanceState">Saved instance state.</param>
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -58,10 +59,10 @@ namespace RevTrainer.Droid
         /// <summary>
         /// Ons the start.
         /// </summary>
-		protected override void OnStart()
-		{
+        protected override void OnStart()
+        {
             base.OnStart();
-		}
+        }
 
         /// <summary>
         /// Ons the restart.
@@ -71,37 +72,37 @@ namespace RevTrainer.Droid
             base.OnRestart();
         }
 
-		/// <summary>
-		/// Ons the resume.
-		/// </summary>
-		protected override void OnResume()
-		{
+        /// <summary>
+        /// Ons the resume.
+        /// </summary>
+        protected override void OnResume()
+        {
             base.OnResume();
         }
 
         /// <summary>
         /// Ons the pause.
         /// </summary>
-		protected override void OnPause()
-		{
+        protected override void OnPause()
+        {
             base.OnPause();
-		}
+        }
 
-		/// <summary>
-		/// Ons the stop.
-		/// </summary>
-		protected override void OnStop()
-		{
+        /// <summary>
+        /// Ons the stop.
+        /// </summary>
+        protected override void OnStop()
+        {
             base.OnStop();
-		}
+        }
 
         /// <summary>
         /// Ons the destroy.
         /// </summary>
-		protected override void OnDestroy()
-		{
+        protected override void OnDestroy()
+        {
             base.OnDestroy();
-		}
+        }
 
         private void DrawRevKites()
         {
@@ -223,6 +224,24 @@ namespace RevTrainer.Droid
             return true;
         }
 
+        private void TakeScreenshot()
+        {
+            root.RootView.DrawingCacheEnabled = true;
+            root.RootView.BuildDrawingCache(true);
+            var bitmap = Bitmap.CreateBitmap(root.RootView.DrawingCache);
+            root.RootView.DrawingCacheEnabled = false;
+
+            // TODO: These two are false for some reason
+            var canWrite = Android.OS.Environment.ExternalStorageDirectory.CanWrite();
+            var canRead = Android.OS.Environment.ExternalStorageDirectory.CanRead();
+
+            var basePath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            var filePath = System.IO.Path.Combine(basePath, DateTimeOffset.Now.ToString());
+            var stream = new FileStream(filePath, FileMode.Create);
+            bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
+            stream.Close();
+        }
+
         void ViewTreeObserver.IOnGlobalLayoutListener.OnGlobalLayout()
         {
             root.ViewTreeObserver.RemoveOnGlobalLayoutListener(this);
@@ -257,6 +276,9 @@ namespace RevTrainer.Droid
                     break;
                 case Resource.Id.action_reset:
                     DrawRevKites();
+                    break;
+                case Resource.Id.action_screenshot:
+                    TakeScreenshot();
                     break;
             }
 
