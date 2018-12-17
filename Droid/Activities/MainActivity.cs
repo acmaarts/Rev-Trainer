@@ -54,10 +54,11 @@ namespace RevTrainer.Droid
         private IMenuItem _ccwMenuItem;
         private IMenuItem _cwMenuItem;
 
-        private int _xDelta;
-        private int _yDelta;
+        private int _oldX;
+        private int _oldY;
 
-        private bool _isClickEvent;
+        private int _oldRawX;
+        private int _oldRawY;
 
         private ImageView _pilotVienna;
         private ImageView _pilotTim;
@@ -450,14 +451,19 @@ namespace RevTrainer.Droid
             switch (e.Action & MotionEventActions.Mask)
             {
                 case MotionEventActions.Down:
-                    _isClickEvent = true;
-
                     layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
-                    _xDelta = rawX - layoutParams.LeftMargin;
-                    _yDelta = rawY - layoutParams.TopMargin;
+                    _oldX = rawX - layoutParams.LeftMargin;
+                    _oldY = rawY - layoutParams.TopMargin;
+
+                    _oldRawX = rawX;
+                    _oldRawY = rawY;
                     break;
                 case MotionEventActions.Up:
-                    if (_isClickEvent)
+                    layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
+                    var rawXDelta = Math.Abs(rawX - _oldRawX);
+                    var rawYDelta = Math.Abs(rawY - _oldRawY);
+
+                    if (rawXDelta < 15 && rawYDelta < 15)
                     {
                         if (_viewModel.IsTurningClockwise)
                         {
@@ -476,11 +482,12 @@ namespace RevTrainer.Droid
                 case MotionEventActions.PointerUp:
                     break;
                 case MotionEventActions.Move:
-                    _isClickEvent = false;
+                    var xDelta = rawX - _oldX;
+                    var yDelta = rawY - _oldY;
 
                     layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
-                    layoutParams.LeftMargin = rawX - _xDelta;
-                    layoutParams.TopMargin = rawY - _yDelta;
+                    layoutParams.LeftMargin = xDelta;
+                    layoutParams.TopMargin = yDelta;
                     v.LayoutParameters = layoutParams;
 
                     _viewModel.MoveKite((int)v.Tag, new Position
