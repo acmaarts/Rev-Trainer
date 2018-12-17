@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace RevTrainer.ViewModels
 {
@@ -14,15 +15,36 @@ namespace RevTrainer.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// When a property is changed notify the UI (WP/WinStore)
+        /// Ons the property changed.
         /// </summary>
-        /// <param name="propName"></param>
-        protected virtual void OnPropertyChanged(string propName)
+        /// <param name="propertyName">Property name.</param>
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (PropertyChanged != null)
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        /// <summary>
+        /// Ons the property changed.
+        /// </summary>
+        /// <param name="expression">Expression.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        protected void OnPropertyChanged<T>(System.Linq.Expressions.Expression<Func<T>> expression)
+        {
+            string propertyName = null;
+            if (null != expression)
+            {
+                var member = expression.Body as System.Linq.Expressions.MemberExpression;
+                if (null != member)
+                {
+                    propertyName = member.Member.Name;
+                }
+            }
+            OnPropertyChanged(propertyName);
         }
     }
 }

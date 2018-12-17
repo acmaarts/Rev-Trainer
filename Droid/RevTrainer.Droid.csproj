@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RevTrainer.Droid</RootNamespace>
     <AssemblyName>RevTrainer.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -126,13 +126,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainApplication.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Helpers\BaseRecycleViewAdapter.cs" />
     <Compile Include="Helpers\RecyclerClickEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Views\DrawView.cs" />
-    <Compile Include="Resources\drawable-xxxhdpi\MainActivity.cs" />
+    <Compile Include="Views\GridView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -155,57 +156,62 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\menu\menu_main.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Judith.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Reset.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Screenshot.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Judith.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Reset.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Screenshot.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Judith.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Reset.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Screenshot.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Judith.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Reset.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Screenshot.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Vienna.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Clockwise.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\CounterClockwise.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Judith.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Mario.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Reset.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Sanne.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Screenshot.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Tim.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Twan.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Vienna.png" />
-    <AndroidResource Include="Resources\menu\menu_main.xml" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\Clockwise.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\CounterClockwise.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\Reset.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Clockwise.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\CounterClockwise.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Reset.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Clockwise.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\CounterClockwise.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Reset.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\Clockwise.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\CounterClockwise.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\Reset.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Clockwise.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\CounterClockwise.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Reset.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Screenshot.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\Screenshot.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Screenshot.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Screenshot.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\Screenshot.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Pilot.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Pilot.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Pilot.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Pilot.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Pilot.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
