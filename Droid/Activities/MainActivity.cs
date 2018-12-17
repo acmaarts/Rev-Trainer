@@ -16,6 +16,8 @@ using GridView = RevTrainer.Droid.Views.GridView;
 using Android.Media;
 using System.IO;
 using Android;
+using Android.Content;
+using System.Threading.Tasks;
 
 namespace RevTrainer.Droid
 {
@@ -30,7 +32,8 @@ namespace RevTrainer.Droid
     public class MainActivity : AppCompatActivity,
                     View.IOnTouchListener,
                     ViewTreeObserver.IOnGlobalLayoutListener,
-                    MediaScannerConnection.IOnScanCompletedListener
+                    MediaScannerConnection.IOnScanCompletedListener,
+                    IDialogInterfaceOnClickListener
     {
         private static Java.Lang.Object VIENNA_KITE_TAG = 1;
         private static Java.Lang.Object TIM_KITE_TAG = 2;
@@ -44,6 +47,9 @@ namespace RevTrainer.Droid
         private ViewGroup _root;
         private GridView _gridView;
         private DrawView _drawView;
+        private TextView _commentView;
+
+        private EditText _input;
 
         private IMenuItem _ccwMenuItem;
         private IMenuItem _cwMenuItem;
@@ -150,6 +156,16 @@ namespace RevTrainer.Droid
 
             _drawView = new DrawView(this);
             _root.AddView(_drawView);
+
+            _commentView = new TextView(this);
+            _commentView.SetTextColor(Color.DarkRed);
+            var layoutParams = new RelativeLayout.LayoutParams(400, 250)
+            {
+                LeftMargin = 100,
+                TopMargin = 100
+            };
+            _commentView.LayoutParameters = layoutParams;
+            _root.AddView(_commentView);
 
             DrawPilots();
             DrawRevKites();
@@ -481,17 +497,39 @@ namespace RevTrainer.Droid
             return true;
         }
 
-        private void TakeScreenshot()
+        private void AskForComment()
         {
-            _gridView.Visibility = ViewStates.Invisible;
-            _drawView.Visibility = ViewStates.Invisible;
+            var alertDialog = new Android.App.AlertDialog.Builder(this);
+            alertDialog.SetTitle("Comment");
+            alertDialog.SetMessage("Enter a comment to add on the image");
+            _input = new EditText(this);
+            var layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.MatchParent);
+            _input.LayoutParameters = layoutParams;
+            alertDialog.SetView(_input);
 
-            _pilotVienna.Visibility = ViewStates.Invisible;
-            _pilotTim.Visibility = ViewStates.Invisible;
-            _pilotMario.Visibility = ViewStates.Invisible;
-            _pilotTwan.Visibility = ViewStates.Invisible;
-            _pilotJudith.Visibility = ViewStates.Invisible;
-            _pilotSanne.Visibility = ViewStates.Invisible;
+            alertDialog.SetPositiveButton("Add", this);
+            alertDialog.SetNeutralButton("Proceed without", this);
+            alertDialog.SetNegativeButton("Cancel", this);
+
+            alertDialog.Show();
+        }
+
+        private async Task TakeScreenshot()
+        {
+            RunOnUiThread(() =>
+            {
+                _commentView.Visibility = ViewStates.Visible;
+
+                _gridView.Visibility = ViewStates.Invisible;
+                _drawView.Visibility = ViewStates.Invisible;
+
+                _pilotVienna.Visibility = ViewStates.Invisible;
+                _pilotTim.Visibility = ViewStates.Invisible;
+                _pilotMario.Visibility = ViewStates.Invisible;
+                _pilotTwan.Visibility = ViewStates.Invisible;
+                _pilotJudith.Visibility = ViewStates.Invisible;
+                _pilotSanne.Visibility = ViewStates.Invisible;
+            });
 
             _root.DrawingCacheEnabled = true;
             _root.BuildDrawingCache(true);
@@ -509,22 +547,53 @@ namespace RevTrainer.Droid
             }
 
             var stream = new FileStream(filePath, FileMode.Create);
-            bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
+            await bitmap.CompressAsync(Bitmap.CompressFormat.Png, 100, stream).ConfigureAwait(false);
             stream.Close();
 
-            _gridView.Visibility = ViewStates.Visible;
-            _drawView.Visibility = ViewStates.Visible;
+            RunOnUiThread(() =>
+            {
+                _commentView.Visibility = ViewStates.Invisible;
 
-            _pilotVienna.Visibility = ViewStates.Visible;
-            _pilotTim.Visibility = ViewStates.Visible;
-            _pilotMario.Visibility = ViewStates.Visible;
-            _pilotTwan.Visibility = ViewStates.Visible;
-            _pilotJudith.Visibility = ViewStates.Visible;
-            _pilotSanne.Visibility = ViewStates.Visible;
+                _gridView.Visibility = ViewStates.Visible;
+                _drawView.Visibility = ViewStates.Visible;
 
-            Toast.MakeText(BaseContext, "Screenshot saved", ToastLength.Short).Show();
+                _pilotVienna.Visibility = ViewStates.Visible;
+                _pilotTim.Visibility = ViewStates.Visible;
+                _pilotMario.Visibility = ViewStates.Visible;
+                _pilotTwan.Visibility = ViewStates.Visible;
+                _pilotJudith.Visibility = ViewStates.Visible;
+                _pilotSanne.Visibility = ViewStates.Visible;
+
+                Toast.MakeText(BaseContext, "Screenshot saved", ToastLength.Short).Show();
+            });
 
             MediaScannerConnection.ScanFile(ApplicationContext, new string[] { filePath }, null, this);
+        }
+
+        /// <summary>
+        /// Ons the click.
+        /// </summary>
+        /// <param name="dialog">Dialog.</param>
+        /// <param name="which">Which.</param>
+        public void OnClick(IDialogInterface dialog, int which)
+        {
+            switch (which)
+            {
+                case -3: // Neutral
+                    Task.Run(TakeScreenshot);
+                    break;
+                case -2: // Cancel
+                    break;
+                case -1: // Add
+                    AddComment(_input.Text);
+                    Task.Run(TakeScreenshot);
+                    break;
+            }
+        }
+
+        private void AddComment(string comment)
+        {
+            _commentView.Text = comment;
         }
 
         /// <summary>
@@ -579,7 +648,7 @@ namespace RevTrainer.Droid
                     Reset();
                     break;
                 case Resource.Id.action_screenshot:
-                    TakeScreenshot();
+                    AskForComment();
                     break;
             }
 
