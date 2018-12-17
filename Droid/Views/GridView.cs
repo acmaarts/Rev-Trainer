@@ -55,7 +55,7 @@ namespace RevTrainer.Droid.Views
         private void Initialize()
         {
             _paint = new Paint();
-            _paint.Color = Color.DarkGray;
+            _paint.Color = Color.LightGray;
             _paint.StrokeWidth = 1.0f;
         }
 
