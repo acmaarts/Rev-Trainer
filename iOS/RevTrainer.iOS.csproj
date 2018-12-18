@@ -19,7 +19,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Twan Aarts (E9MTZ2B42G)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
@@ -35,7 +35,7 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Twan Aarts (E9MTZ2B42G)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -49,7 +49,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Twan Aarts (E9MTZ2B42G)</CodesignKey>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
@@ -64,7 +64,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Twan Aarts (E9MTZ2B42G)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -120,26 +120,67 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\First.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed.png" />
-    <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed%402x.png" />
-    <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%403x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%402x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%403x.png" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Sanne.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Sanne.imageset\Sanne%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Sanne.imageset\Sanne%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Sanne.imageset\Sanne%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Sanne.imageset\Sanne%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Twan.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Tim.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Mario.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Judith.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Pilot.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Pilot.imageset\Pilot%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Pilot.imageset\Pilot%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Pilot.imageset\Pilot%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Pilot.imageset\Pilot%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Judith.imageset\Judith%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Judith.imageset\Judith%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Judith.imageset\Judith%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Judith.imageset\Judith%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Mario.imageset\Mario%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Mario.imageset\Mario%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Mario.imageset\Mario%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Mario.imageset\Mario%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Tim.imageset\Tim%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Tim.imageset\Tim%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Tim.imageset\Tim%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Tim.imageset\Tim%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Twan.imageset\Twan%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Twan.imageset\Twan%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Twan.imageset\Twan%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Twan.imageset\Twan%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Vienna.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Vienna.imageset\Vienna%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Vienna.imageset\Vienna%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Vienna.imageset\Vienna%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Vienna.imageset\Vienna%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-24%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-27.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-44%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-86%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-98%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CarPlay-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CarPlay-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppleWatchAppStore.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="ViewControllers\MasterViewController.cs" />
-    <Compile Include="ViewControllers\DetailViewController.cs" />
-    <Compile Include="ViewControllers\SplitViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GridView.cs" />
+    <Compile Include="Views\DrawView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -148,6 +189,23 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewControllers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Assets.xcassets\Vienna.imageset\" />
+    <Folder Include="Assets.xcassets\Sanne.imageset\" />
+    <Folder Include="Assets.xcassets\Twan.imageset\" />
+    <Folder Include="Assets.xcassets\Tim.imageset\" />
+    <Folder Include="Assets.xcassets\Mario.imageset\" />
+    <Folder Include="Assets.xcassets\Judith.imageset\" />
+    <Folder Include="Assets.xcassets\Pilot.imageset\" />
+    <Folder Include="Assets.xcassets\Vienna.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="..\RevTrainer\RevTrainer.projitems" Label="Shared" Condition="Exists('..\RevTrainer\RevTrainer.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

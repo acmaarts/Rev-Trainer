@@ -14,7 +14,7 @@ namespace RevTrainer.iOS
     {
         // class-level declarations
         private UIWindow _window;
-        private SplitViewController _splitViewController;
+        private MainViewController _viewController;
 
         /// <summary>
         /// Finisheds the launching.
@@ -32,8 +32,8 @@ namespace RevTrainer.iOS
             _window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             // If you have defined a view, add it here:
-            _splitViewController = new SplitViewController();
-            _window.RootViewController = _splitViewController;
+            _viewController = new MainViewController();
+            _window.RootViewController = _viewController;
 
             // make the window visible
             _window.MakeKeyAndVisible();

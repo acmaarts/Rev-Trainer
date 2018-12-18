@@ -4,17 +4,17 @@
       "idiom": "universal"
     },
     {
-      "filename": "tab_about.png",
+      "filename": "Pilot@1x.png",
       "scale": "1x",
       "idiom": "universal"
     },
     {
-      "filename": "tab_about@2x.png",
+      "filename": "Pilot@2x.png",
       "scale": "2x",
       "idiom": "universal"
     },
     {
-      "filename": "tab_about@3x.png",
+      "filename": "Pilot@3x.png",
       "scale": "3x",
       "idiom": "universal"
     },
@@ -22,19 +22,23 @@
       "idiom": "iphone"
     },
     {
+      "filename": "Pilot@1x.png",
       "scale": "1x",
       "idiom": "iphone"
     },
     {
+      "filename": "Pilot@2x.png",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
+      "filename": "Pilot@4x.png",
       "subtype": "retina4",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
+      "filename": "Pilot@3x.png",
       "scale": "3x",
       "idiom": "iphone"
     },
@@ -42,10 +46,12 @@
       "idiom": "ipad"
     },
     {
+      "filename": "Pilot@1x.png",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
+      "filename": "Pilot@2x.png",
       "scale": "2x",
       "idiom": "ipad"
     },
@@ -76,6 +82,17 @@
     {
       "scale": "2x",
       "idiom": "mac"
+    },
+    {
+      "idiom": "car"
+    },
+    {
+      "scale": "2x",
+      "idiom": "car"
+    },
+    {
+      "scale": "3x",
+      "idiom": "car"
     }
   ],
   "info": {
