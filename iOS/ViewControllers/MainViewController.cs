@@ -134,7 +134,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteVienna.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteVienna),
                     Position = new Position
                     {
                         X = (float)_kiteVienna.Frame.X,
@@ -154,7 +154,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteTim.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteTim),
                     Position = new Position
                     {
                         X = (float)_kiteTim.Frame.X,
@@ -174,7 +174,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteMario.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteMario),
                     Position = new Position
                     {
                         X = (float)_kiteMario.Frame.X,
@@ -194,7 +194,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteTwan.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteTwan),
                     Position = new Position
                     {
                         X = (float)_kiteTwan.Frame.X,
@@ -214,7 +214,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteJudith.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteJudith),
                     Position = new Position
                     {
                         X = (float)_kiteJudith.Frame.X,
@@ -234,7 +234,7 @@ namespace RevTrainer.iOS.ViewControllers
                 },
                 Kite = new Kite
                 {
-                    //Rotation = _kiteSanne.Rotation,
+                    Rotation = GetRotationValueOfView(_kiteSanne),
                     Position = new Position
                     {
                         X = (float)_kiteSanne.Frame.X,
@@ -251,94 +251,94 @@ namespace RevTrainer.iOS.ViewControllers
         {
             var horizontalCenter = View.Frame.Width / 2;
 
-            _pilotVienna = new UIImageView(new CGRect(horizontalCenter + 490, View.Frame.Height - 10, 20, 20))
+            _pilotVienna = new UIImageView(new CGRect(horizontalCenter + 300, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotVienna);
 
-            _pilotTim = new UIImageView(new CGRect(horizontalCenter + 290, View.Frame.Height - 10, 20, 20))
+            _pilotTim = new UIImageView(new CGRect(horizontalCenter + 175, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotTim);
 
-            _pilotMario = new UIImageView(new CGRect(horizontalCenter + 90, View.Frame.Height - 10, 20, 20))
+            _pilotMario = new UIImageView(new CGRect(horizontalCenter + 50, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotMario);
 
-            _pilotTwan = new UIImageView(new CGRect(horizontalCenter - 110, View.Frame.Height - 10, 20, 20))
+            _pilotTwan = new UIImageView(new CGRect(horizontalCenter - 75, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotTwan);
 
-            _pilotJudith = new UIImageView(new CGRect(horizontalCenter - 310, View.Frame.Height - 10, 20, 20))
+            _pilotJudith = new UIImageView(new CGRect(horizontalCenter - 200, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotJudith);
 
-            _pilotSanne = new UIImageView(new CGRect(horizontalCenter - 510, View.Frame.Height - 10, 20, 20))
+            _pilotSanne = new UIImageView(new CGRect(horizontalCenter - 325, View.Frame.Height - 5, 5, 5))
             {
-                Image = new UIImage("Pilot")
+                Image = UIImage.FromBundle("Pilot")
             };
             View.AddSubview(_pilotSanne);
         }
 
         private void DrawRevKites()
         {
-            var baseWidth = (View.Frame.Width - 1175) / 2;
+            var baseWidth = (View.Frame.Width - 755) / 2;
             var baseHeight = View.Frame.Height - 50;
 
-            _kiteVienna = new UIImageView(new CGRect(baseWidth + 1000, baseHeight, 175, 60))
+            _kiteVienna = new UIImageView(new CGRect(baseWidth + 625, baseHeight, 105, 36))
             {
-                Image = new UIImage("Vienna"),
+                Image = UIImage.FromBundle("Vienna"),
                 Tag = VIENNA_KITE_TAG
             };
-            //_kiteVienna.SetOnTouchListener(this);
+            _kiteVienna.UserInteractionEnabled = true;
             View.AddSubview(_kiteVienna);
 
-            _kiteTim = new UIImageView(new CGRect(baseWidth + 800, baseHeight, 175, 60))
+            _kiteTim = new UIImageView(new CGRect(baseWidth + 500, baseHeight, 105, 36))
             {
-                Image = new UIImage("Tim"),
+                Image = UIImage.FromBundle("Tim"),
                 Tag = TIM_KITE_TAG
             };
-            //_kiteTim.SetOnTouchListener(this);
+            _kiteTim.UserInteractionEnabled = true;
             View.AddSubview(_kiteTim);
 
-            _kiteMario = new UIImageView(new CGRect(baseWidth + 600, baseHeight, 175, 60))
+            _kiteMario = new UIImageView(new CGRect(baseWidth + 375, baseHeight, 105, 36))
             {
-                Image = new UIImage("Mario"),
+                Image = UIImage.FromBundle("Mario"),
                 Tag = MARIO_KITE_TAG
             };
-            //_kiteMario.SetOnTouchListener(this);
+            _kiteMario.UserInteractionEnabled = true;
             View.AddSubview(_kiteMario);
 
-            _kiteTwan = new UIImageView(new CGRect(baseWidth + 400, baseHeight, 175, 60))
+            _kiteTwan = new UIImageView(new CGRect(baseWidth + 250, baseHeight, 105, 36))
             {
-                Image = new UIImage("Twan"),
+                Image = UIImage.FromBundle("Twan"),
                 Tag = TWAN_KITE_TAG
             };
-            //_kiteTwan.SetOnTouchListener(this);
+            _kiteTwan.UserInteractionEnabled = true;
             View.AddSubview(_kiteTwan);
 
-            _kiteJudith = new UIImageView(new CGRect(baseWidth + 200, baseHeight, 175, 60))
+            _kiteJudith = new UIImageView(new CGRect(baseWidth + 125, baseHeight, 105, 36))
             {
-                Image = new UIImage("Judith"),
+                Image = UIImage.FromBundle("Judith"),
                 Tag = JUDITH_KITE_TAG
             };
-            //_kiteJudith.SetOnTouchListener(this);
+            _kiteJudith.UserInteractionEnabled = true;
             View.AddSubview(_kiteJudith);
 
-            _kiteSanne = new UIImageView(new CGRect(baseWidth, baseHeight, 175, 60))
+            _kiteSanne = new UIImageView(new CGRect(baseWidth, baseHeight, 105, 36))
             {
-                Image = new UIImage("Sanne"),
+                Image = UIImage.FromBundle("Sanne"),
                 Tag = SANNE_KITE_TAG
             };
-            //_kiteSanne.SetOnTouchListener(this);
+            _kiteSanne.UserInteractionEnabled = true;
             View.AddSubview(_kiteSanne);
         }
 
@@ -352,6 +352,7 @@ namespace RevTrainer.iOS.ViewControllers
             base.TouchesBegan(touches, evt);
 
             var touch = touches.First() as UITouch;
+
             int rawX = (int)touch.View.Frame.X;
             int rawY = (int)touch.View.Frame.Y;
 
@@ -371,7 +372,7 @@ namespace RevTrainer.iOS.ViewControllers
         {
             base.TouchesMoved(touches, evt);
 
-            var touch = touches.First() as UITouch;
+            /*var touch = touches.First() as UITouch;
             int rawX = (int)touch.View.Frame.X;
             int rawY = (int)touch.View.Frame.Y;
 
@@ -388,7 +389,7 @@ namespace RevTrainer.iOS.ViewControllers
 
             _drawView.UpdateTeam(_viewModel.Team);
             View.SetNeedsDisplay();
-            _drawView.SetNeedsDisplay();
+            _drawView.SetNeedsDisplay();*/
         }
 
         /// <summary>
@@ -401,29 +402,37 @@ namespace RevTrainer.iOS.ViewControllers
             base.TouchesEnded(touches, evt);
 
             var touch = touches.First() as UITouch;
-            int rawX = (int)touch.View.Frame.X;
-            int rawY = (int)touch.View.Frame.Y;
-
-            var rawXDelta = Math.Abs(rawX - _oldRawX);
-            var rawYDelta = Math.Abs(rawY - _oldRawY);
-
-            if (rawXDelta < 15 && rawYDelta < 15)
+            if (touch.View is UIImageView)
             {
-                if (_viewModel.IsTurningClockwise)
+                int rawX = (int)touch.View.Frame.X;
+                int rawY = (int)touch.View.Frame.Y;
+
+                var rawXDelta = Math.Abs(rawX - _oldRawX);
+                var rawYDelta = Math.Abs(rawY - _oldRawY);
+
+                if (rawXDelta < 15 && rawYDelta < 15)
                 {
-                    touch.View.Transform = CGAffineTransform.MakeRotation(45);
-                }
-                else
-                {
-                    touch.View.Transform = CGAffineTransform.MakeRotation(-45);
+                    var degrees = GetRotationValueOfView(touch.View);
+
+                    if (_viewModel.IsTurningClockwise)
+                    {
+                        degrees += 45.0f;
+                    }
+                    else
+                    {
+                        degrees -= 45.0f;
+                    }
+
+                    var radians = Math.PI / 180 * degrees;
+                    touch.View.Transform = CGAffineTransform.MakeRotation((float)radians);
+
+                    _viewModel.RotateKite((int)touch.View.Tag);
                 }
 
-                _viewModel.RotateKite((int)touch.View.Tag);
+                _drawView.UpdateTeam(_viewModel.Team);
+                View.SetNeedsDisplay();
+                _drawView.SetNeedsDisplay();
             }
-
-            _drawView.UpdateTeam(_viewModel.Team);
-            View.SetNeedsDisplay();
-            _drawView.SetNeedsDisplay();
         }
 
         /// <summary>
@@ -525,6 +534,14 @@ namespace RevTrainer.iOS.ViewControllers
                 _ccwMenuItem.Enabled = _viewModel.IsTurningClockwise;
                 _cwMenuItem.Enabled = !_viewModel.IsTurningClockwise;
             }
+        }
+
+        private float GetRotationValueOfView(UIView view)
+        {
+            var radians = Math.Atan2(view.Transform.yx, view.Transform.xx);
+            var degrees = radians * (180 / Math.PI);
+
+            return (float)degrees;
         }
     }
 }
