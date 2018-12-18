@@ -82,18 +82,13 @@ namespace RevTrainer.iOS.ViewControllers
 
         private void AskForResetConfirmation()
         {
-            /*var alertDialog = new Android.App.AlertDialog.Builder(this);
-            alertDialog.SetTitle("Reset");
-            alertDialog.SetMessage("Are you sure you want to reset the simulation?");
-            alertDialog.SetCancelable(false);
-            alertDialog.SetPositiveButton("Yes", (s, e) =>
+            var alertDialog = UIAlertController.Create("Reset", "Are you sure you want to reset the simulation?", UIAlertControllerStyle.Alert);
+            alertDialog.AddAction(UIAlertAction.Create("Yes", UIAlertActionStyle.Default, (a) =>
             {
                 Reset();
-            });
-
-            alertDialog.SetNegativeButton("No", (s, e) => { });
-
-            alertDialog.Show();*/
+            }));
+            alertDialog.AddAction(UIAlertAction.Create("No", UIAlertActionStyle.Cancel, (a) => { }));
+            PresentViewController(alertDialog, true, null);
         }
 
         private void Reset()
@@ -105,12 +100,16 @@ namespace RevTrainer.iOS.ViewControllers
                 view.RemoveFromSuperview();
             }
 
-            _gridView = new GridView();
-            _gridView.Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height);
+            _gridView = new GridView
+            {
+                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height)
+            };
             View.AddSubview(_gridView);
 
-            _drawView = new DrawView();
-            _drawView.Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height);
+            _drawView = new DrawView
+            {
+                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height)
+            };
             View.AddSubview(_drawView);
 
             _commentView = new UILabel(new CGRect(100, 100, 400, 250))
@@ -351,10 +350,9 @@ namespace RevTrainer.iOS.ViewControllers
         {
             base.TouchesBegan(touches, evt);
 
-            var touch = touches.First() as UITouch;
-
-            int rawX = (int)touch.View.Frame.X;
-            int rawY = (int)touch.View.Frame.Y;
+            var touch = evt.AllTouches.AnyObject as UITouch;
+            int rawX = (int)touch.LocationInView(View).X;
+            int rawY = (int)touch.LocationInView(View).Y;
 
             _oldX = rawX - (int)touch.View.Frame.Left;
             _oldY = rawY - (int)touch.View.Frame.Top;
@@ -372,24 +370,25 @@ namespace RevTrainer.iOS.ViewControllers
         {
             base.TouchesMoved(touches, evt);
 
-            /*var touch = touches.First() as UITouch;
-            int rawX = (int)touch.View.Frame.X;
-            int rawY = (int)touch.View.Frame.Y;
-
-            var xDelta = rawX - _oldX;
-            var yDelta = rawY - _oldY;
-
-            touch.View.Frame.Offset(xDelta, yDelta);
-
-            _viewModel.MoveKite((int)touch.View.Tag, new Position
+            var touch = evt.AllTouches.AnyObject as UITouch;
+            if (touch.View is UIImageView)
             {
-                X = (float)touch.View.Frame.X,
-                Y = (float)touch.View.Frame.Y
-            });
+                int rawX = (int)touch.LocationInView(View).X;
+                int rawY = (int)touch.LocationInView(View).Y;
 
-            _drawView.UpdateTeam(_viewModel.Team);
-            View.SetNeedsDisplay();
-            _drawView.SetNeedsDisplay();*/
+                var xDelta = rawX - _oldX;
+                var yDelta = rawY - _oldY;
+
+                var touchLocation = touch.LocationInView(View);
+                var frame = touch.View.Frame;
+                frame.X = View.Window.Frame.X + touchLocation.X - _oldX;
+                frame.Y = View.Window.Frame.Y + touchLocation.Y - _oldY;
+                touch.View.Frame = frame;
+
+                _drawView.UpdateTeam(_viewModel.Team);
+                View.SetNeedsDisplay();
+                _drawView.SetNeedsDisplay();
+            }
         }
 
         /// <summary>
@@ -404,8 +403,8 @@ namespace RevTrainer.iOS.ViewControllers
             var touch = touches.First() as UITouch;
             if (touch.View is UIImageView)
             {
-                int rawX = (int)touch.View.Frame.X;
-                int rawY = (int)touch.View.Frame.Y;
+                int rawX = (int)touch.LocationInView(View).X;
+                int rawY = (int)touch.LocationInView(View).Y;
 
                 var rawXDelta = Math.Abs(rawX - _oldRawX);
                 var rawYDelta = Math.Abs(rawY - _oldRawY);
@@ -447,27 +446,21 @@ namespace RevTrainer.iOS.ViewControllers
 
         private void AskForComment()
         {
-            /*var alertDialog = new Android.App.AlertDialog.Builder(this);
-            alertDialog.SetTitle("Comment");
-            alertDialog.SetMessage("Enter a comment to add on the image");
-            _input = new EditText(this);
-            var layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.MatchParent);
-            _input.LayoutParameters = layoutParams;
-            alertDialog.SetView(_input);
-            alertDialog.SetPositiveButton("Add", (s, e) =>
+            var alertDialog = UIAlertController.Create("Comment", "Enter a comment to add on the image", UIAlertControllerStyle.Alert);
+            alertDialog.AddTextField((field) => { });
+            alertDialog.AddAction(UIAlertAction.Create("Add", UIAlertActionStyle.Default, (a) =>
             {
                 Reset();
 
-                AddComment(_input.Text);
+                AddComment(alertDialog.TextFields[0].Text);
                 Task.Run(TakeScreenshot);
-            });
-            alertDialog.SetNeutralButton("Proceed without", (s, e) =>
+            }));
+            alertDialog.AddAction(UIAlertAction.Create("Proceed without", UIAlertActionStyle.Default, (a) =>
             {
                 Task.Run(TakeScreenshot);
-            });
-            alertDialog.SetNegativeButton("Cancel", (s, e) => { });
-
-            alertDialog.Show();*/
+            }));
+            alertDialog.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (a) => { }));
+            PresentViewController(alertDialog, true, null);
         }
 
         private async Task TakeScreenshot()
