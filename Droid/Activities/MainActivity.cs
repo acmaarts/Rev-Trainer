@@ -32,8 +32,7 @@ namespace RevTrainer.Droid
     public class MainActivity : AppCompatActivity,
                     View.IOnTouchListener,
                     ViewTreeObserver.IOnGlobalLayoutListener,
-                    MediaScannerConnection.IOnScanCompletedListener,
-                    IDialogInterfaceOnClickListener
+                    MediaScannerConnection.IOnScanCompletedListener
     {
         private static Java.Lang.Object VIENNA_KITE_TAG = 1;
         private static Java.Lang.Object TIM_KITE_TAG = 2;
@@ -144,6 +143,22 @@ namespace RevTrainer.Droid
         protected override void OnDestroy()
         {
             base.OnDestroy();
+        }
+
+        private void AskForResetConfirmation()
+        {
+            var alertDialog = new Android.App.AlertDialog.Builder(this);
+            alertDialog.SetTitle("Reset");
+            alertDialog.SetMessage("Are you sure you want to reset the simulation?");
+            alertDialog.SetCancelable(false);
+            alertDialog.SetPositiveButton("Yes", (s, e) =>
+            {
+                Reset();
+            });
+
+            alertDialog.SetNegativeButton("No", (s, e) => { });
+
+            alertDialog.Show();
         }
 
         private void Reset()
@@ -513,10 +528,18 @@ namespace RevTrainer.Droid
             var layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.MatchParent);
             _input.LayoutParameters = layoutParams;
             alertDialog.SetView(_input);
+            alertDialog.SetPositiveButton("Add", (s, e) =>
+            {
+                Reset();
 
-            alertDialog.SetPositiveButton("Add", this);
-            alertDialog.SetNeutralButton("Proceed without", this);
-            alertDialog.SetNegativeButton("Cancel", this);
+                AddComment(_input.Text);
+                Task.Run(TakeScreenshot);
+            });
+            alertDialog.SetNeutralButton("Proceed without", (s, e) =>
+            {
+                Task.Run(TakeScreenshot);
+            });
+            alertDialog.SetNegativeButton("Cancel", (s, e) => { });
 
             alertDialog.Show();
         }
@@ -537,6 +560,8 @@ namespace RevTrainer.Droid
                 _pilotJudith.Visibility = ViewStates.Invisible;
                 _pilotSanne.Visibility = ViewStates.Invisible;
             });
+
+            await Task.Delay(50).ConfigureAwait(false);
 
             _root.DrawingCacheEnabled = true;
             _root.BuildDrawingCache(true);
@@ -575,27 +600,6 @@ namespace RevTrainer.Droid
             });
 
             MediaScannerConnection.ScanFile(ApplicationContext, new string[] { filePath }, null, this);
-        }
-
-        /// <summary>
-        /// Ons the click.
-        /// </summary>
-        /// <param name="dialog">Dialog.</param>
-        /// <param name="which">Which.</param>
-        public void OnClick(IDialogInterface dialog, int which)
-        {
-            switch (which)
-            {
-                case -3: // Neutral
-                    Task.Run(TakeScreenshot);
-                    break;
-                case -2: // Cancel
-                    break;
-                case -1: // Add
-                    AddComment(_input.Text);
-                    Task.Run(TakeScreenshot);
-                    break;
-            }
         }
 
         private void AddComment(string comment)
@@ -652,7 +656,7 @@ namespace RevTrainer.Droid
                     TurningButtonPressed(false);
                     break;
                 case Resource.Id.action_reset:
-                    Reset();
+                    AskForResetConfirmation();
                     break;
                 case Resource.Id.action_screenshot:
                     AskForComment();
