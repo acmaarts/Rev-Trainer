@@ -1,5 +1,4 @@
 ﻿using Foundation;
-using RevTrainer.iOS.ViewControllers;
 using UIKit;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -13,9 +12,13 @@ namespace RevTrainer.iOS
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
-        private UIWindow _window;
-        private MainViewController _viewController;
 
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
+        
         /// <summary>
         /// Finisheds the launching.
         /// </summary>
@@ -27,16 +30,6 @@ namespace RevTrainer.iOS
             AppCenter.Start("91bd19c3-ec72-4228-9acc-fac2dc08b612", typeof(Analytics), typeof(Crashes));
 
             App.Initialize();
-
-            // create a new window instance based on the screen size
-            _window = new UIWindow(UIScreen.MainScreen.Bounds);
-
-            // If you have defined a view, add it here:
-            _viewController = new MainViewController();
-            _window.RootViewController = _viewController;
-
-            // make the window visible
-            _window.MakeKeyAndVisible();
 
             return true;
         }

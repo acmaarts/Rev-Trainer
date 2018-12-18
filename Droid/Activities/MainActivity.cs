@@ -474,7 +474,6 @@ namespace RevTrainer.Droid
                     _oldRawY = rawY;
                     break;
                 case MotionEventActions.Up:
-                    layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
                     var rawXDelta = Math.Abs(rawX - _oldRawX);
                     var rawYDelta = Math.Abs(rawY - _oldRawY);
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CoreGraphics;
+using Foundation;
 using RevTrainer.iOS.Views;
 using RevTrainer.Models;
 using RevTrainer.ViewModels;
@@ -52,7 +54,8 @@ namespace RevTrainer.iOS.ViewControllers
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RevTrainer.iOS.ViewControllers.MainViewController"/> class.
         /// </summary>
-        public MainViewController() : base("MainViewController", null)
+        /// <param name="handle">Handle.</param>
+        public MainViewController(IntPtr handle) : base(handle)
         {
             _viewModel = new MainViewModel();
         }
@@ -339,67 +342,99 @@ namespace RevTrainer.iOS.ViewControllers
             View.AddSubview(_kiteSanne);
         }
 
-        /*bool View.IOnTouchListener.OnTouch(View v, MotionEvent e)
+        /// <summary>
+        /// Toucheses the began.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="evt">Evt.</param>
+        public override void TouchesBegan(NSSet touches, UIEvent evt)
         {
-            RelativeLayout.LayoutParams layoutParams;
-            int rawX = (int)e.RawX;
-            int rawY = (int)e.RawY;
+            base.TouchesBegan(touches, evt);
 
-            switch (e.Action & MotionEventActions.Mask)
+            var touch = touches.First() as UITouch;
+            int rawX = (int)touch.View.Frame.X;
+            int rawY = (int)touch.View.Frame.Y;
+
+            _oldX = rawX - (int)touch.View.Frame.Left;
+            _oldY = rawY - (int)touch.View.Frame.Top;
+
+            _oldRawX = rawX;
+            _oldRawY = rawY;
+        }
+
+        /// <summary>
+        /// Toucheses the moved.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="evt">Evt.</param>
+        public override void TouchesMoved(NSSet touches, UIEvent evt)
+        {
+            base.TouchesMoved(touches, evt);
+
+            var touch = touches.First() as UITouch;
+            int rawX = (int)touch.View.Frame.X;
+            int rawY = (int)touch.View.Frame.Y;
+
+            var xDelta = rawX - _oldX;
+            var yDelta = rawY - _oldY;
+
+            touch.View.Frame.Offset(xDelta, yDelta);
+
+            _viewModel.MoveKite((int)touch.View.Tag, new Position
             {
-                case MotionEventActions.Down:
-                    layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
-                    _oldX = rawX - layoutParams.LeftMargin;
-                    _oldY = rawY - layoutParams.TopMargin;
+                X = (float)touch.View.Frame.X,
+                Y = (float)touch.View.Frame.Y
+            });
 
-                    _oldRawX = rawX;
-                    _oldRawY = rawY;
-                    break;
-                case MotionEventActions.Up:
-                    layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
-                    var rawXDelta = Math.Abs(rawX - _oldRawX);
-                    var rawYDelta = Math.Abs(rawY - _oldRawY);
+            _drawView.UpdateTeam(_viewModel.Team);
+            View.SetNeedsDisplay();
+            _drawView.SetNeedsDisplay();
+        }
 
-                    if (rawXDelta < 15 && rawYDelta < 15)
-                    {
-                        if (_viewModel.IsTurningClockwise)
-                        {
-                            v.Rotation += 45.0f;
-                        }
-                        else
-                        {
-                            v.Rotation -= 45.0f;
-                        }
+        /// <summary>
+        /// Toucheses the ended.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="evt">Evt.</param>
+        public override void TouchesEnded(NSSet touches, UIEvent evt)
+        {
+            base.TouchesEnded(touches, evt);
 
-                        _viewModel.RotateKite((int)v.Tag);
-                    }
-                    break;
-                case MotionEventActions.PointerDown:
-                    break;
-                case MotionEventActions.PointerUp:
-                    break;
-                case MotionEventActions.Move:
-                    var xDelta = rawX - _oldX;
-                    var yDelta = rawY - _oldY;
+            var touch = touches.First() as UITouch;
+            int rawX = (int)touch.View.Frame.X;
+            int rawY = (int)touch.View.Frame.Y;
 
-                    layoutParams = v.LayoutParameters as RelativeLayout.LayoutParams;
-                    layoutParams.LeftMargin = xDelta;
-                    layoutParams.TopMargin = yDelta;
-                    v.LayoutParameters = layoutParams;
+            var rawXDelta = Math.Abs(rawX - _oldRawX);
+            var rawYDelta = Math.Abs(rawY - _oldRawY);
 
-                    _viewModel.MoveKite((int)v.Tag, new Position
-                    {
-                        X = v.Frame.X,
-                        Y = v.Frame.Y
-                    });
-                    break;
+            if (rawXDelta < 15 && rawYDelta < 15)
+            {
+                if (_viewModel.IsTurningClockwise)
+                {
+                    touch.View.Transform = CGAffineTransform.MakeRotation(45);
+                }
+                else
+                {
+                    touch.View.Transform = CGAffineTransform.MakeRotation(-45);
+                }
+
+                _viewModel.RotateKite((int)touch.View.Tag);
             }
 
             _drawView.UpdateTeam(_viewModel.Team);
-            View.Invalidate();
-            _drawView.Invalidate();
-            return true;
-        }*/
+            View.SetNeedsDisplay();
+            _drawView.SetNeedsDisplay();
+        }
+
+        /// <summary>
+        /// Toucheses the cancelled.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="evt">Evt.</param>
+        public override void TouchesCancelled(NSSet touches, UIEvent evt)
+        {
+            base.TouchesCancelled(touches, evt);
+        }
 
         private void AskForComment()
         {
