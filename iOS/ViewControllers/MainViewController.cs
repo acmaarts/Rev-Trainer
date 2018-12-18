@@ -520,7 +520,7 @@ namespace RevTrainer.iOS.ViewControllers
             alertDialog.AddTextField((field) => { });
             alertDialog.AddAction(UIAlertAction.Create("Add", UIAlertActionStyle.Default, (a) =>
             {
-                Reset();
+                Task.Run(TakeScreenshot);
 
                 AddComment(alertDialog.TextFields[0].Text);
                 Task.Run(TakeScreenshot);
