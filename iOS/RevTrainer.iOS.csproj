@@ -175,6 +175,26 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Screenshot.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Reset.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Clockwise.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CounterClockwise.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Clockwise.imageset\Clockwise%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Clockwise.imageset\Clockwise%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Clockwise.imageset\Clockwise%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Clockwise.imageset\Clockwise%404x.png" />
+    <ImageAsset Include="Assets.xcassets\CounterClockwise.imageset\CounterClockwise%404x.png" />
+    <ImageAsset Include="Assets.xcassets\CounterClockwise.imageset\CounterClockwise%403x.png" />
+    <ImageAsset Include="Assets.xcassets\CounterClockwise.imageset\CounterClockwise%401x.png" />
+    <ImageAsset Include="Assets.xcassets\CounterClockwise.imageset\CounterClockwise%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Reset.imageset\Reset%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Reset.imageset\Reset%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Reset.imageset\Reset%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Reset.imageset\Reset%404x.png" />
+    <ImageAsset Include="Assets.xcassets\Screenshot.imageset\Screenshot%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Screenshot.imageset\Screenshot%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Screenshot.imageset\Screenshot%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Screenshot.imageset\Screenshot%404x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
@@ -206,6 +226,10 @@
     <Folder Include="Assets.xcassets\Judith.imageset\" />
     <Folder Include="Assets.xcassets\Pilot.imageset\" />
     <Folder Include="Assets.xcassets\Vienna.imageset\" />
+    <Folder Include="Assets.xcassets\Screenshot.imageset\" />
+    <Folder Include="Assets.xcassets\Reset.imageset\" />
+    <Folder Include="Assets.xcassets\Clockwise.imageset\" />
+    <Folder Include="Assets.xcassets\CounterClockwise.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

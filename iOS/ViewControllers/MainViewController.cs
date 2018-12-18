@@ -30,6 +30,8 @@ namespace RevTrainer.iOS.ViewControllers
 
         private UIBarButtonItem _ccwMenuItem;
         private UIBarButtonItem _cwMenuItem;
+        private UIBarButtonItem _screenshotMenuItem;
+        private UIBarButtonItem _resetMenuItem;
 
         private int _oldX;
         private int _oldY;
@@ -68,6 +70,62 @@ namespace RevTrainer.iOS.ViewControllers
             base.ViewDidLoad();
 
             View.BackgroundColor = UIColor.White;
+
+            _cwMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Redo, (s, e) =>
+            {
+                TurningButtonPressed(true);
+            });
+
+            _ccwMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Undo, (s, e) =>
+            {
+                TurningButtonPressed(false);
+            });
+
+            _screenshotMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Camera, (s, e) =>
+            {
+                AskForComment();
+            });
+
+            _resetMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Trash, (s, e) =>
+            {
+                AskForResetConfirmation();
+            });
+
+
+            /*_cwMenuItem = new UIBarButtonItem(UIImage.FromBundle("Clockwise"), UIBarButtonItemStyle.Plain, (s, e) =>
+            {
+                TurningButtonPressed(true);
+            })
+            {
+                TintColor = UIColor.White
+            };
+
+            _ccwMenuItem = new UIBarButtonItem(UIImage.FromBundle("CounterClockwise"), UIBarButtonItemStyle.Plain, (s, e) =>
+            {
+                TurningButtonPressed(false);
+            })
+            {
+                TintColor = UIColor.White
+            };
+
+            _screenshotMenuItem = new UIBarButtonItem(UIImage.FromBundle("Screenshot"), UIBarButtonItemStyle.Plain, (s, e) =>
+            {
+                AskForComment();
+            })
+            {
+                TintColor = UIColor.White
+            };
+
+            _resetMenuItem = new UIBarButtonItem(UIImage.FromBundle("Reset"), UIBarButtonItemStyle.Plain, (s, e) =>
+            {
+                AskForResetConfirmation();
+            })
+            {
+                TintColor = UIColor.Red
+            };*/
+
+            NavigationItem.RightBarButtonItems = new UIBarButtonItem[] { _resetMenuItem, _screenshotMenuItem, _ccwMenuItem };
+
             Reset();
         }
 
@@ -102,19 +160,21 @@ namespace RevTrainer.iOS.ViewControllers
 
             _gridView = new GridView
             {
-                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height)
+                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height),
+                BackgroundColor = UIColor.White
             };
             View.AddSubview(_gridView);
 
             _drawView = new DrawView
             {
-                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height)
+                Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height),
+                BackgroundColor = UIColor.FromWhiteAlpha(0.0f, 0.0f)
             };
             View.AddSubview(_drawView);
 
-            _commentView = new UILabel(new CGRect(100, 100, 400, 250))
+            _commentView = new UILabel(new CGRect(50, 50, 200, 150))
             {
-                TextColor = UIColor.Red
+                TextColor = UIColor.FromRGB(139, 0, 0)
             };
             View.AddSubview(_commentView);
 
@@ -385,6 +445,12 @@ namespace RevTrainer.iOS.ViewControllers
                 frame.Y = View.Window.Frame.Y + touchLocation.Y - _oldY;
                 touch.View.Frame = frame;
 
+                _viewModel.MoveKite((int)touch.View.Tag, new Position
+                {
+                    X = (float)touch.View.Frame.X,
+                    Y = (float)touch.View.Frame.Y
+                });
+
                 _drawView.UpdateTeam(_viewModel.Team);
                 View.SetNeedsDisplay();
                 _drawView.SetNeedsDisplay();
@@ -426,6 +492,12 @@ namespace RevTrainer.iOS.ViewControllers
                     touch.View.Transform = CGAffineTransform.MakeRotation((float)radians);
 
                     _viewModel.RotateKite((int)touch.View.Tag);
+
+                    _viewModel.MoveKite((int)touch.View.Tag, new Position
+                    {
+                        X = (float)touch.View.Frame.X,
+                        Y = (float)touch.View.Frame.Y
+                    });
                 }
 
                 _drawView.UpdateTeam(_viewModel.Team);
@@ -524,8 +596,14 @@ namespace RevTrainer.iOS.ViewControllers
 
             if (_ccwMenuItem != null && _cwMenuItem != null)
             {
-                _ccwMenuItem.Enabled = _viewModel.IsTurningClockwise;
-                _cwMenuItem.Enabled = !_viewModel.IsTurningClockwise;
+                if (_viewModel.IsTurningClockwise)
+                {
+                    NavigationItem.RightBarButtonItems = new UIBarButtonItem[] { _resetMenuItem, _screenshotMenuItem, _ccwMenuItem };
+                }
+                else
+                {
+                    NavigationItem.RightBarButtonItems = new UIBarButtonItem[] { _resetMenuItem, _screenshotMenuItem, _cwMenuItem };
+                }
             }
         }
 
