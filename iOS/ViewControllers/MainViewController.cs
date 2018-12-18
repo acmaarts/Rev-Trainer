@@ -71,28 +71,7 @@ namespace RevTrainer.iOS.ViewControllers
 
             View.BackgroundColor = UIColor.White;
 
-            _cwMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Redo, (s, e) =>
-            {
-                TurningButtonPressed(true);
-            });
-
-            _ccwMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Undo, (s, e) =>
-            {
-                TurningButtonPressed(false);
-            });
-
-            _screenshotMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Camera, (s, e) =>
-            {
-                AskForComment();
-            });
-
-            _resetMenuItem = new UIBarButtonItem(UIBarButtonSystemItem.Trash, (s, e) =>
-            {
-                AskForResetConfirmation();
-            });
-
-
-            /*_cwMenuItem = new UIBarButtonItem(UIImage.FromBundle("Clockwise"), UIBarButtonItemStyle.Plain, (s, e) =>
+            _cwMenuItem = new UIBarButtonItem(UIImage.FromBundle("Clockwise"), UIBarButtonItemStyle.Plain, (s, e) =>
             {
                 TurningButtonPressed(true);
             })
@@ -122,7 +101,7 @@ namespace RevTrainer.iOS.ViewControllers
             })
             {
                 TintColor = UIColor.Red
-            };*/
+            };
 
             NavigationItem.RightBarButtonItems = new UIBarButtonItem[] { _resetMenuItem, _screenshotMenuItem, _ccwMenuItem };
 
@@ -433,6 +412,18 @@ namespace RevTrainer.iOS.ViewControllers
             var touch = evt.AllTouches.AnyObject as UITouch;
             if (touch.View is UIImageView)
             {
+                var mustReturnToOldRotation = false;
+
+                var degrees = GetRotationValueOfView(touch.View);
+                if (Math.Abs(degrees / 45) % 2 == 1)
+                {
+                    mustReturnToOldRotation = true;
+
+                    degrees += 45.0f;
+                    var radians = Math.PI / 180 * degrees;
+                    touch.View.Transform = CGAffineTransform.MakeRotation((float)radians);
+                }
+
                 int rawX = (int)touch.LocationInView(View).X;
                 int rawY = (int)touch.LocationInView(View).Y;
 
@@ -450,6 +441,13 @@ namespace RevTrainer.iOS.ViewControllers
                     X = (float)touch.View.Frame.X,
                     Y = (float)touch.View.Frame.Y
                 });
+
+                if (mustReturnToOldRotation)
+                {
+                    degrees -= 45.0f;
+                    var radians = Math.PI / 180 * degrees;
+                    touch.View.Transform = CGAffineTransform.MakeRotation((float)radians);
+                }
 
                 _drawView.UpdateTeam(_viewModel.Team);
                 View.SetNeedsDisplay();
@@ -551,24 +549,16 @@ namespace RevTrainer.iOS.ViewControllers
 
             await Task.Delay(50).ConfigureAwait(false);
 
-            /*View.DrawingCacheEnabled = true;
-            View.BuildDrawingCache(true);
-            var bitmap = Bitmap.CreateBitmap(View.DrawingCache);
-            View.DrawingCacheEnabled = false;
-
-            var fileName = string.Format("{0}.png", DateTimeOffset.Now.ToString());
-
-            var basePath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            var filePath = System.IO.Path.Combine(basePath, "United Wings", fileName);
-
-            if (!Directory.Exists(System.IO.Path.Combine(basePath, "United Wings")))
+            UIGraphics.BeginImageContext(View.Window.Bounds.Size);
+            View.Window.Layer.RenderInContext(UIGraphics.GetCurrentContext());
+            var image = UIGraphics.GetImageFromCurrentImageContext();
+            UIGraphics.EndImageContext();
+            var imageData = image.AsPNG();
+            if (imageData != null)
             {
-                Directory.CreateDirectory(System.IO.Path.Combine(basePath, "United Wings"));
+                var fileName = string.Format("{0}.png", DateTimeOffset.Now.ToString());
+                imageData.Save(fileName, false);
             }
-
-            var stream = new FileStream(filePath, FileMode.Create);
-            await bitmap.CompressAsync(Bitmap.CompressFormat.Png, 100, stream).ConfigureAwait(false);
-            stream.Close();*/
 
             _commentView.Hidden = true;
 
@@ -582,7 +572,9 @@ namespace RevTrainer.iOS.ViewControllers
             _pilotJudith.Hidden = false;
             _pilotSanne.Hidden = false;
 
-            //Toast.MakeText(BaseContext, "Screenshot saved", ToastLength.Short).Show();
+            var alertDialog = UIAlertController.Create("Screenshot saved", "The screenshot has been saved to the Photos app", UIAlertControllerStyle.Alert);
+            alertDialog.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, (a) => { }));
+            PresentViewController(alertDialog, true, null);
         }
 
         private void AddComment(string comment)
