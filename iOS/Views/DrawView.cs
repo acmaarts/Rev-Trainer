@@ -1,4 +1,5 @@
-﻿using UIKit;
+﻿using RevTrainer.Models;
+using UIKit;
 
 namespace RevTrainer.iOS.Views
 {
@@ -7,6 +8,18 @@ namespace RevTrainer.iOS.Views
     /// </summary>
     public class DrawView : UIView
     {
+        private Team _team = null;
 
+
+
+
+        /// <summary>
+        /// Updates the team.
+        /// </summary>
+        /// <param name="team">Team.</param>
+        public void UpdateTeam(Team team)
+        {
+            _team = team;
+        }
     }
 }

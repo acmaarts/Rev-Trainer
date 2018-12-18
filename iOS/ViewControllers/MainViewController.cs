@@ -97,12 +97,17 @@ namespace RevTrainer.iOS.ViewControllers
         {
             TurningButtonPressed(true);
 
-            //View.RemoveAllViews();
+            foreach (var view in View.Subviews)
+            {
+                view.RemoveFromSuperview();
+            }
 
             _gridView = new GridView();
+            _gridView.Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height);
             View.AddSubview(_gridView);
 
             _drawView = new DrawView();
+            _drawView.Frame = new CGRect(0, 0, View.Frame.Width, View.Frame.Height);
             View.AddSubview(_drawView);
 
             _commentView = new UILabel(new CGRect(100, 100, 400, 250))
@@ -235,8 +240,8 @@ namespace RevTrainer.iOS.ViewControllers
                 }
             });
 
-            //_drawView.UpdateTeam(_viewModel.Team);
-            //_drawView.Invalidate();
+            _drawView.UpdateTeam(_viewModel.Team);
+            _drawView.SetNeedsDisplay();
         }
 
         private void DrawPilots()

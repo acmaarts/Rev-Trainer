@@ -1,4 +1,5 @@
-﻿using UIKit;
+﻿using CoreGraphics;
+using UIKit;
 
 namespace RevTrainer.iOS.Views
 {
@@ -8,5 +9,9 @@ namespace RevTrainer.iOS.Views
     public class GridView : UIView
     {
 
+        public override void Draw(CGRect rect)
+        {
+
+        }
     }
 }
